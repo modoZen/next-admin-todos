@@ -13,3 +13,10 @@ pnpm dev
 # or
 bun dev
 ```
+
+# Prisma comands
+
+```bash
+npx prisma init
+npx prisma migrate dev
+```
