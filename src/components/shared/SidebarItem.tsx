@@ -2,14 +2,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FC } from "react";
-import { CiBookmarkCheck } from "react-icons/ci";
 
 interface Props {
   text: string;
   path: string;
+  icon: React.ReactNode;
 }
 
-export const SidebarItem: FC<Props> = ({ text, path }) => {
+export const SidebarItem: FC<Props> = ({ text, path, icon }) => {
   const currentPath = usePathname();
 
   const isActive = currentPath === path;
@@ -23,10 +23,10 @@ export const SidebarItem: FC<Props> = ({ text, path }) => {
       {/* Active className: text-white bg-gradient-to-r from-sky-600 to-cyan-400 */}
       <Link
         href={path}
-        className={`px-4 py-3 flex items-center space-x-4 rounded-md ${activeClassName}`}
+        className={`px-4 py-3 flex items-center space-x-4 rounded-md hover:bg-gradient-to-r hover:bg-sky-600 hover:text-white ${activeClassName}`}
       >
-        <CiBookmarkCheck size={30} />
-        <span className="group-hover:text-gray-700">{text}</span>
+        {icon}
+        <span className="group-hover:text-white">{text}</span>
       </Link>
     </li>
   );

@@ -1,12 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CiLogout } from "react-icons/ci";
-import { IoLogoReact } from "react-icons/io5";
+import {
+  IoCalendarOutline,
+  IoCheckboxOutline,
+  IoListOutline,
+} from "react-icons/io5";
 import { SidebarItem } from "./SidebarItem";
 
 const sidebarItems = [
-  { text: "Dashboard", path: "/dashboard" },
-  { text: "Categories", path: "/categories" },
+  {
+    text: "Dashboard",
+    path: "/dashboard",
+    icon: <IoCalendarOutline />,
+  },
+  {
+    text: "Rest TODOS",
+    path: "/dashboard/rest-todos",
+    icon: <IoCheckboxOutline />,
+  },
+  {
+    text: "Server Actions",
+    path: "/dashboard/server-todos",
+    icon: <IoListOutline />,
+  },
 ];
 
 export const Sidebar = () => {
@@ -20,6 +37,7 @@ export const Sidebar = () => {
               width={150}
               height={150}
               alt="Logo"
+              className="w-auto"
             />
           </Link>
         </div>
@@ -40,8 +58,8 @@ export const Sidebar = () => {
         </div>
 
         <ul className="space-y-2 tracking-wide mt-8">
-          {sidebarItems.map(({ path, text }) => (
-            <SidebarItem key={path} text={text} path={path} />
+          {sidebarItems.map(({ path, text, icon }) => (
+            <SidebarItem key={path} text={text} path={path} icon={icon} />
           ))}
         </ul>
       </div>
