@@ -5,13 +5,19 @@ import styles from "./TodoItem.module.css";
 
 interface Props {
   todo: Todo;
+  // TODO: Acciones que quiero llamar
+  toggleTodo: (id: string, completed: boolean) => Promise<Todo | void>;
 }
 
-export const TodoItem = ({ todo: { description, completed } }: Props) => {
+export const TodoItem = ({
+  todo: { id, description, completed },
+  toggleTodo,
+}: Props) => {
   return (
     <div className={completed ? styles.todoDone : styles.todoPending}>
       <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
         <div
+          onClick={() => toggleTodo(id, !completed)}
           className={`
           flex p-2 rounded-md cursor-pointer
           hover:bg-opacity-60
