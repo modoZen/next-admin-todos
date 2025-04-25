@@ -1,5 +1,4 @@
-import { Sidebar } from "@/components/shared/Sidebar";
-import { TopMenu } from "@/components/shared/TopMenu";
+import { Sidebar, TopMenu } from "@/components";
 
 export default function DashboardLayout({
   children,
