@@ -1,3 +1,4 @@
+"use client";
 import { Todo } from "@prisma/client";
 import { TodoItem } from "./TodoItem";
 
