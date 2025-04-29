@@ -4,6 +4,7 @@ import { CiLogout } from "react-icons/ci";
 import {
   IoCalendarOutline,
   IoCheckboxOutline,
+  IoCodeWorkingOutline,
   IoListOutline,
 } from "react-icons/io5";
 import { SidebarItem } from "./SidebarItem";
@@ -23,6 +24,11 @@ const sidebarItems = [
     text: "Server Actions",
     path: "/dashboard/server-todos",
     icon: <IoListOutline />,
+  },
+  {
+    text: "Cookies",
+    path: "/dashboard/cookies",
+    icon: <IoCodeWorkingOutline />,
   },
 ];
 
