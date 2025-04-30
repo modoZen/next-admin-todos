@@ -7,6 +7,7 @@ import {
   IoCheckboxOutline,
   IoCodeWorkingOutline,
   IoListOutline,
+  IoPersonOutline,
 } from "react-icons/io5";
 import { SidebarItem } from "./SidebarItem";
 import { auth } from "@/auth";
@@ -37,6 +38,11 @@ const sidebarItems = [
     path: "/dashboard/products",
     icon: <IoBaseballOutline />,
   },
+  {
+    text: "Perfil",
+    path: "/dashboard/profile",
+    icon: <IoPersonOutline />,
+  },
 ];
 
 export const Sidebar = async () => {
@@ -58,6 +64,7 @@ export const Sidebar = async () => {
               height={150}
               alt="Logo"
               className="w-auto"
+              priority
             />
           </Link>
         </div>
