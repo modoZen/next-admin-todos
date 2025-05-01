@@ -18,16 +18,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       const dbUser = await prisma.user.findUnique({
         where: { email: token.email! },
       });
+      if (dbUser?.isActive === false) {
+        throw Error("Usuario no activo");
+      }
       token.roles = dbUser?.roles;
       token.id = dbUser?.id;
-      token.isActive = dbUser?.isActive;
       return token;
     },
     session({ session, token }) {
-      console.log(token);
-
       if (session && session.user) {
-        session.user.roles = token.roles;
+        session.user.roles = token.roles as string[];
         session.user.id = token.id as string;
       }
 
