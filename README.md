@@ -14,6 +14,11 @@ pnpm dev
 bun dev
 ```
 
+## Nota: usuario por defecto
+
+**usuario**: test1@google.com
+**password**: 123456
+
 # Prisma comands
 
 ```bash
