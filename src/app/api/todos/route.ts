@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import prisma from "@/lib/prisma";
 import { NextResponse, NextRequest } from "next/server";
 import { boolean, object, string } from "yup";
@@ -30,11 +31,19 @@ const postSchema = object({
 
 export async function POST(request: Request) {
   try {
+    const session = await auth();
+
+    if (!session?.user) {
+      return NextResponse.json("No autorizado", { status: 401 });
+    }
+
     const bodyRaw = await request.json();
 
     const { completed, description } = await postSchema.validate(bodyRaw);
 
-    const todo = await prisma.todo.create({ data: { completed, description } });
+    const todo = await prisma.todo.create({
+      data: { completed, description, userId: session.user.id! },
+    });
     return NextResponse.json(todo, { status: 201 });
   } catch (error) {
     return NextResponse.json(error, { status: 400 });
@@ -43,8 +52,14 @@ export async function POST(request: Request) {
 
 export async function DELETE() {
   try {
+    const session = await auth();
+
+    if (!session?.user) {
+      return NextResponse.json("No autorizado", { status: 401 });
+    }
+
     await prisma.todo.deleteMany({
-      where: { completed: true },
+      where: { completed: true, userId: session.user.id },
     });
 
     return NextResponse.json("Borrados completados");
