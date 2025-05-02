@@ -2,6 +2,7 @@
 import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma";
 import { Todo } from "@prisma/client";
+import { auth } from "@/auth";
 
 export const sleep = async (seconds: number = 0) => {
   return new Promise((resolve) => {
@@ -35,9 +36,11 @@ export const toggleTodo = async (
 
 export const addTodo = async (description: string) => {
   await sleep(3);
+
   try {
+    const session = await auth();
     const todo = await prisma.todo.create({
-      data: { completed: false, description },
+      data: { completed: false, description, userId: session?.user?.id! },
     });
     revalidatePath("/dashboard/server-todos");
     return todo;
