@@ -10,7 +10,8 @@ export async function GET(request: Request) {
   const user = await prisma.user.create({
     data: {
       email: "test1@google.com",
-      password: bcrypt.hashSync("123456"),
+      password: bcrypt.hashSync("1234444"),
+      name: "Thanos",
       roles: ["admin", "user"],
       todos: {
         create: [

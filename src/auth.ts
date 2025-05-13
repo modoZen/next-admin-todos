@@ -17,11 +17,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           label: "Correo electrónico",
           type: "email",
           placeholder: "usuario@google.com",
+          value: "test1@google.com",
         },
         password: {
           label: "Contraseña",
           type: "password",
           placeholder: "******",
+          value: "1234444",
         },
       },
       authorize: async (credentials) => {

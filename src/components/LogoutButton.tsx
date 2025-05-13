@@ -6,8 +6,6 @@ import { IoShieldOutline } from "react-icons/io5";
 export const LogoutButton = () => {
   const { status } = useSession();
 
-  console.log({ status });
-
   if (status === "loading") {
     return (
       <button className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">

@@ -5,6 +5,7 @@ CREATE TABLE "Todo" (
     "completed" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
+    "userId" TEXT NOT NULL,
 
     CONSTRAINT "Todo_pkey" PRIMARY KEY ("id")
 );
@@ -13,6 +14,7 @@ CREATE TABLE "Todo" (
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "name" TEXT,
+    "password" TEXT,
     "roles" TEXT[] DEFAULT ARRAY['user']::TEXT[],
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "username" TEXT,
@@ -105,6 +107,9 @@ CREATE UNIQUE INDEX "VerificationToken_identifier_token_key" ON "VerificationTok
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Authenticator_credentialID_key" ON "Authenticator"("credentialID");
+
+-- AddForeignKey
+ALTER TABLE "Todo" ADD CONSTRAINT "Todo_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

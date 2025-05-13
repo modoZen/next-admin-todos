@@ -20,20 +20,25 @@ const sidebarItems = [
     icon: <IoCalendarOutline />,
   },
   {
-    text: "Rest TODOS",
+    text: "TODOS",
     path: "/dashboard/rest-todos",
     icon: <IoCheckboxOutline />,
   },
-  {
-    text: "Server Actions",
-    path: "/dashboard/server-todos",
-    icon: <IoListOutline />,
-  },
-  {
-    text: "Cookies",
-    path: "/dashboard/cookies",
-    icon: <IoCodeWorkingOutline />,
-  },
+  // {
+  //   text: "Rest TODOS",
+  //   path: "/dashboard/rest-todos",
+  //   icon: <IoCheckboxOutline />,
+  // },
+  // {
+  //   text: "Server Actions",
+  //   path: "/dashboard/server-todos",
+  //   icon: <IoListOutline />,
+  // },
+  // {
+  //   text: "Cookies",
+  //   path: "/dashboard/cookies",
+  //   icon: <IoCodeWorkingOutline />,
+  // },
   {
     text: "Productos",
     path: "/dashboard/products",
